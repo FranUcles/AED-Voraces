@@ -16,7 +16,7 @@ void Voraz(vector<bool> &Alumnos, vector<vector<int>> &Amistades, vector<vector<
     // Ahora hacemos el bucle que se repetirá mientras no haya solución
     while (ultima <= parejas) {             // Habrá una solución cuando la última pareja esté asignada
         // Elegimos cuál es la pareja más prometedora
-        vector<int> pareja_aux;         
+        vector<int> pareja_aux;             // Seleccionamos la pareja
         int alumno1 = pareja_aux[0];        // Obtenemos el primer alumno de la pareja
         int alumno2 = pareja_aux[1];        // Obtenemos el segundo alumno de la pareja
         // Quitamos a los alumnos de los candidatos
