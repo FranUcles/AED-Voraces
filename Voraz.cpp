@@ -95,7 +95,7 @@ int main(int argc, char const *argv[])
         vector<vector<int>> Parejas((int)ceil((double)alumnos/2),vector<int>(2,VACIO));     // Creo la matriz de las parejas
         Voraz(Alumnos, Amistades, Trabajo, Parejas, valor);                         // Ejecuto el algoritmo voraz
         cout << valor << endl;
-        for(int j = 0; j < Parejas.size(); j++){
+        for(unsigned j = 0; j < Parejas.size(); j++){
             if (Parejas[j][1] == VACIO)
                 cout << Parejas[j][0] << " ";
             else
