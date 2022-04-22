@@ -53,7 +53,7 @@ void Voraz(vector<bool> &Alumnos, vector<vector<int>> &Amistades, vector<vector<
         Parejas[ultima - 1][0] = alumno1;                   // Los coloco en el array de soluciones
         Parejas[ultima - 1][1] = alumno2;                   // ...
         ultima++;                                           // Paso a la siguiente pareja a colocar
-        if (alumno2 != 1)                                   // Actualizo el valor de esa pareja en caso de que no sea un alumno suelto
+        if (alumno2 != -1)                                   // Actualizo el valor de esa pareja en caso de que no sea un alumno suelto
             valor = valor + Amistades[alumno1 - 1][alumno2 - 1]*Amistades[alumno2 - 1][alumno1 - 1] + Trabajo[alumno1 - 1][alumno2 - 1]*Trabajo[alumno2 - 1][alumno1 - 1];
     }
 }
