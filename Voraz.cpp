@@ -1,4 +1,5 @@
 #include <vector>
+#include <iostream>
 #include <math.h>
 using namespace std;
 
@@ -55,5 +56,44 @@ void Voraz(vector<bool> &Alumnos, vector<vector<int>> &Amistades, vector<vector<
         ultima++;                                           // Paso a la siguiente pareja a colocar
         if (alumno2 != -1)                                   // Actualizo el valor de esa pareja en caso de que no sea un alumno suelto
             valor = valor + Amistades[alumno1 - 1][alumno2 - 1]*Amistades[alumno2 - 1][alumno1 - 1] + Trabajo[alumno1 - 1][alumno2 - 1]*Trabajo[alumno2 - 1][alumno1 - 1];
+    }
+}
+void leerDatos(int alumnos, vector<vector<int>> &Amistades, vector<vector<int>> &Trabajo)
+{
+    for (int i = 0; i < alumnos; i++){
+        for (int j = 0; j < alumnos; j++)
+        {
+            if (i == j)
+                Amistades[i][j] = 0; // si estamos en la diagonal, ponemos un 0
+            else
+                cin >> Amistades[i][j]; // en otor caso, leemos el dato y lo ponemos en la matriz.
+        }
+    }
+    for (int i = 0; i < alumnos; i++){
+        for (int j = 0; j < alumnos; j++)
+        {
+            if (i == j)
+                Trabajo[i][j] = 0; // si estamos en la diagonal, ponemos un 0
+            else
+                cin >> Trabajo[i][j]; // en otor caso, leemos el dato y lo ponemos en la matriz.
+        }
+    }
+}
+
+int main(int argc, char const *argv[])
+{
+    int casos;
+    cin >> casos;
+    for (int i = 1; i <= casos; i++){
+        int alumnos;
+        cin >> alumnos;
+        vector<vector<int>> Amistades(alumnos, vector<int>(alumnos));           // Inicializo la matriz de amistades
+        vector<vector<int>> Trabajo(alumnos, vector<int>(alumnos));             // Inicializo la matriz de trabajo
+        vector<bool> Alumnos(alumnos, false);                                   // Inicializo todos los alumnos a false, pues ninguno está seleccionado
+        leerDatos(alumnos, Amistades, Trabajo);                                 // Leer los datos necesario del fichero
+        int valor = 0;                                                          // Variable para guardar el valor de esa distribución
+        vector<vector<int>> Parejas((int)ceil(alumnos/2),vector<int>(2,-1));    // Creo la matriz de las parejas
+        Voraz(Alumnos, Amistades, Trabajo, Parejas, valor);                     // Ejecuto el algoritmo voraz
+        cout << "HECHO" << endl;
     }
 }
